@@ -356,6 +356,7 @@ WHERE issued_emp_id =
 
 ```sql
 -- Taking a peek at the list of members with the quantity of books
+
 SELECT 
 	issued_member_id,
 	COUNT(issued_id) as total_book_issued
@@ -363,6 +364,7 @@ FROM issued_status
 GROUP BY issued_member_id;
 
 -- Selecting members who have been issued more than one book
+
 SELECT issued_member_id
 FROM issued_status
 GROUP BY issued_member_id
@@ -373,6 +375,7 @@ HAVING COUNT(*) > 1;
 
 ```sql
 -- Displaying the table which I'm gonna create
+
 SELECT
 	b.isbn,
 	b.book_title,
@@ -383,6 +386,7 @@ ON ist.issued_book_isbn = b.isbn
 GROUP BY b.isbn;
 
 -- Creating the table
+
 CREATE TABLE book_issuance_qty
 AS
 SELECT
@@ -636,7 +640,7 @@ per every book (each day a book is kept past the due date incurs a charge of $0.
 Then create another table which sums up the fine for each member.
 
 ```sql
--- first table
+-- First table
 
 CREATE TABLE overdue_books_and_fines
 AS
@@ -673,8 +677,7 @@ FROM
 ORDER BY 
     member_id, days_overdue DESC;
 
-
--- second table
+-- Second table
 
 CREATE TABLE total_fine_per_member
 AS
