@@ -688,6 +688,6 @@ ORDER BY member_id;
 
 ## Author: Julita Wawreszuk-Chylińska (based on Zero Analyst project)
 
-**LinkedIn**: [Julita Wawreszuk-Chylińska](www.linkedin.com/in/julita-wawreszuk-chylińska/)
+**LinkedIn**: [Julita Wawreszuk-Chylińska](https://www.linkedin.com/in/julita-wawreszuk-chylińska/)
 
 Thank you for your interest in this project!
