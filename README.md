@@ -305,6 +305,7 @@ SELECT * FROM return_status;
 ### 3. Completing tasks by creating queries
 
 **Task 1. Create a New Book Record:**
+
 "'978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.'"
 
 ```sql
@@ -313,6 +314,7 @@ VALUES ('978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'H
 ```
 
 ***Task 2. Update an Existing Member's Address (knowing his member id):***
+
 Member id: C103
 New address: 125 Oak St
 
@@ -323,6 +325,7 @@ WHERE member_id = 'C103';
 ```
 
 **Task 3. Delete a Record from the Issued Status Table (knowing the book name, issued date and the id of employee who issued the book):**
+
 Book name: The Shining
 Issued date: 2024-03-25
 Employee id: E109
@@ -333,6 +336,7 @@ WHERE issued_book_name = 'The Shining' AND issued_date = '2024-03-25' AND issued
 ```
 
 ***Task 4. Retrieve All Books Issued by a Specific Employee (knowing his name):***
+
 Employee name: John Doe
 
 ```sql
@@ -391,6 +395,7 @@ GROUP BY b.isbn;
 ```
 
 **Task 7. Retrieve All Books in a Specific Category:**
+
 Category: Classic
 
 ```sql
@@ -440,6 +445,7 @@ ON e2.emp_id = br.manager_id;
 ```
 
 **Task 11.  Create a table of books with rental prices that fall within the specified range:**
+
 Range: from 7 (inclusive) to 9 (inclusive)
 
 ```sql
