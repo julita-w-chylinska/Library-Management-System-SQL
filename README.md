@@ -304,15 +304,17 @@ SELECT * FROM return_status;
 
 ### 3. Completing tasks by creating queries
 
-**Task 1. Create a New Book Record**
--- "978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.')"
+**Task 1. Create a New Book Record:** 
+"'978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.'"
 
 ```sql
-INSERT INTO books(isbn, book_title, category, rental_price, status, author, publisher)
-VALUES('978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.');
-SELECT * FROM books;
+INSERT INTO books 
+VALUES ('978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.');
 ```
-**Task 2: Update an Existing Member's Address**
+
+***Task 2. Update an Existing Member's Address (knowing his member id):***
+Member id: C103
+New address: 125 Oak St
 
 ```sql
 UPDATE members
@@ -320,113 +322,145 @@ SET member_address = '125 Oak St'
 WHERE member_id = 'C103';
 ```
 
-**Task 3: Delete a Record from the Issued Status Table**
--- Objective: Delete the record with issued_id = 'IS121' from the issued_status table.
+**Task 3. Delete a Record from the Issued Status Table (knowing the book name, issued date and the id of employee who issued the book):**
+Book name: The Shining
+Issued date: 2024-03-25
+Employee id: E109
 
 ```sql
 DELETE FROM issued_status
-WHERE   issued_id =   'IS121';
+WHERE issued_book_name = 'The Shining' AND issued_date = '2024-03-25' AND issued_emp_id = 'E109';
 ```
 
-**Task 4: Retrieve All Books Issued by a Specific Employee**
--- Objective: Select all books issued by the employee with emp_id = 'E101'.
-```sql
-SELECT * FROM issued_status
-WHERE issued_emp_id = 'E101'
-```
-
-
-**Task 5: List Members Who Have Issued More Than One Book**
--- Objective: Use GROUP BY to find members who have issued more than one book.
+***Task 4. Retrieve All Books Issued by a Specific Employee (knowing his name):***
+Employee name: John Doe
 
 ```sql
-SELECT
-    issued_emp_id,
-    COUNT(*)
+SELECT issued_book_name 
 FROM issued_status
-GROUP BY 1
-HAVING COUNT(*) > 1
+WHERE issued_emp_id = 
+	(
+	SELECT emp_id 
+	FROM employees
+	WHERE emp_name = 'John Doe'
+	)
+;
 ```
 
-### 3. CTAS (Create Table As Select)
-
-- **Task 6: Create Summary Tables**: Used CTAS to generate new tables based on query results - each book and total book_issued_cnt**
+**Task 5: List members who have been issued more than one book**
 
 ```sql
-CREATE TABLE book_issued_cnt AS
-SELECT b.isbn, b.book_title, COUNT(ist.issued_id) AS issue_count
-FROM issued_status as ist
-JOIN books as b
+-- Taking a peek at the list of members with the quantity of books
+SELECT 
+	issued_member_id,
+	COUNT(issued_id) as total_book_issued
+FROM issued_status
+GROUP BY issued_member_id;
+
+-- Selecting members who have been issued more than one book
+SELECT issued_member_id
+FROM issued_status
+GROUP BY issued_member_id
+HAVING COUNT(*) > 1;
+```
+
+**Task 6. Create summary table with each book and it’s issuance quantity**
+
+```sql
+-- Displaying the table which I'm gonna create
+SELECT
+	b.isbn,
+	b.book_title,
+	COUNT(issued_id) as total_issuance_quantity
+FROM books as b
+JOIN issued_status as ist
 ON ist.issued_book_isbn = b.isbn
-GROUP BY b.isbn, b.book_title;
+GROUP BY b.isbn;
+
+-- Creating the table
+CREATE TABLE book_issuance_qty
+AS
+SELECT
+	b.isbn,
+	b.book_title,
+	COUNT(issued_id) as total_issuance_quantity
+FROM books as b
+JOIN issued_status as ist
+ON ist.issued_book_isbn = b.isbn
+GROUP BY b.isbn;
 ```
 
-
-### 4. Data Analysis & Findings
-
-The following SQL queries were used to address specific questions:
-
-Task 7. **Retrieve All Books in a Specific Category**:
+**Task 7. Retrieve All Books in a Specific Category:**
+Category: Classic
 
 ```sql
-SELECT * FROM books
+SELECT *
+FROM books
 WHERE category = 'Classic';
 ```
 
-8. **Task 8: Find Total Rental Income by Category**:
+**Task 8. Find Total Rental Income by Category**
 
 ```sql
 SELECT 
     b.category,
-    SUM(b.rental_price),
-    COUNT(*)
-FROM 
-issued_status as ist
-JOIN
-books as b
-ON b.isbn = ist.issued_book_isbn
-GROUP BY 1
+	COUNT(issued_id) as total_issuance_quantity,
+    SUM(b.rental_price) as total_rental_income
+FROM books as b
+JOIN issued_status as ist
+ON ist.issued_book_isbn = b.isbn
+GROUP BY b.category;
 ```
 
-9. **List Members Who Registered in the Last 180 Days**:
+**Task 9. List members who registered in the last 180 days**
+
 ```sql
-SELECT * FROM members
-WHERE reg_date >= CURRENT_DATE - INTERVAL '180 days';
+SELECT * 
+FROM members
+WHERE reg_date >= CURRENT_DATE - INTERVAL '179 days';
 ```
 
-10. **List Employees with Their Branch Manager's Name and their branch details**:
+**Task 10. List employees with their branch manager's name and their branch details**
 
 ```sql
 SELECT 
-    e1.emp_id,
-    e1.emp_name,
-    e1.position,
-    e1.salary,
-    b.*,
-    e2.emp_name as manager
+    e1.emp_id as employee_id,
+    e1.emp_name as employee_name,
+    e1.position as employee_position,
+    br.branch_id,
+	br.manager_id,
+	br.branch_address,
+	br.contact_no as manager_contact_no,
+    e2.emp_name as manager_name
 FROM employees as e1
-JOIN 
-branch as b
-ON e1.branch_id = b.branch_id    
-JOIN
-employees as e2
-ON e2.emp_id = b.manager_id
+JOIN branch as br
+ON e1.branch_id = br.branch_id    
+JOIN employees as e2
+ON e2.emp_id = br.manager_id;
 ```
 
-Task 11. **Create a Table of Books with Rental Price Above a Certain Threshold**:
+**Task 11.  Create a table of books with rental prices that fall within the specified range:**
+Range: from 7 (inclusive) to 9 (inclusive)
+
 ```sql
-CREATE TABLE expensive_books AS
-SELECT * FROM books
-WHERE rental_price > 7.00;
+CREATE TABLE books_with_7_to_9_price 
+AS
+SELECT *
+FROM books
+WHERE rental_price BETWEEN 7.00 AND 9.00;
 ```
 
-Task 12: **Retrieve the List of Books Not Yet Returned**
+**Task 12. Retrieve the list of books not yet returned**
+
 ```sql
-SELECT * FROM issued_status as ist
-LEFT JOIN
-return_status as rs
-ON rs.issued_id = ist.issued_id
-WHERE rs.return_id IS NULL;
+SELECT
+	ist.*,
+	rst.return_id
+FROM issued_status as ist
+LEFT JOIN return_status as rst
+ON rst.issued_id = ist.issued_id
+WHERE rst.return_id IS NULL
+ORDER BY issued_date ASC; -- ordering by the date of issuance to see which books where borrowed the farthest back in time
 ```
 
 ## Advanced SQL Operations
