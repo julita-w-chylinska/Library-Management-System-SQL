@@ -6,7 +6,7 @@
 
 This project demonstrates the implementation of a Library Management System using SQL. It includes creating database with DDL queries, establishing relationships between tables, inserting first records into tables, performing another CRUD operations and executing more advanced SQL queries like CTE. The goal is to showcase skills in database design, manipulation and querying.
 
-![Library_project](https://github.com/julita-w-chylinska/Library-Management-Project-SQL/blob/main/library_image.webp)
+![Library_project](library_image.webp)
 
 ## Objectives
 
