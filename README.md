@@ -133,7 +133,8 @@ ALTER TABLE books
 RENAME COLUMN status TO avail_status;
 
 ```
-- **Creation EDB**: Created legible Entitiy Relationship Diagram to show dependencies between tables.
+
+- **Creating EDB**: Created legible Entitiy Relationship Diagram to show dependencies between tables.
 
 ![ERD](library_ERD.png)
 
@@ -143,7 +144,7 @@ RENAME COLUMN status TO avail_status;
 
 ![chatGPT](library_ChatGPT_adjusting_code.png)
 
-- **Inserting first records**: Inserting first records with adjusted code
+- **Inserting first records**: Inserted first records with adjusted code
 
 ```sql
 -- Inserting values into books table 
@@ -300,6 +301,8 @@ VALUES
 ('RS118', 'IS120', '2024-05-29');
 SELECT * FROM return_status;
 ```
+
+### 3. Completing tasks by creating queries
 
 **Task 1. Create a New Book Record**
 -- "978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.')"
