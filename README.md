@@ -21,7 +21,8 @@ This project demonstrates the implementation of a Library Management System usin
 ### 1. Setting up the Library Management System database
 
 - **Creating database**: Created a database named `LIBRARY_project` using pgAdmin user interface.
-- **Creating tables**: Created tables for branches, employees, books, members, issued status, and return status. Each table includes relevant columns and relationships.
+  
+- **Creating tables**: Created tables for branches, employees, books, members, issued status and return status. Set up relevant columns and established main and foreign keys to form relationships between tables.
 
 ```sql
 -- creating tables
@@ -144,7 +145,7 @@ RENAME COLUMN status TO avail_status;
 
 ![chatGPT](library_ChatGPT_adjusting_code.png)
 
-- **Inserting first records**: Inserted first records with adjusted code
+- **Inserting first records**: Inserted first records with adjusted code. Checked each table.
 
 ```sql
 -- Inserting values into books table 
