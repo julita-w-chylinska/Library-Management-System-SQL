@@ -305,7 +305,7 @@ SELECT * FROM return_status;
 
 ### 3. Completing tasks by creating queries
 
-**Task 1. Create a New Book Record:**
+**Task 1. Create a new book record:**
 
 "'978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.'"
 
@@ -314,7 +314,7 @@ INSERT INTO books
 VALUES ('978-1-60129-456-2', 'To Kill a Mockingbird', 'Classic', 6.00, 'yes', 'Harper Lee', 'J.B. Lippincott & Co.');
 ```
 
-**Task 2. Update an Existing Member's Address (knowing his member id):**
+**Task 2. Update an existing member's address (knowing his member id):**
 
 Member id: C103
 New address: 125 Oak St
@@ -325,7 +325,7 @@ SET member_address = '125 Oak St'
 WHERE member_id = 'C103';
 ```
 
-**Task 3. Delete a Record from the Issued Status Table (knowing the book name, issued date and the id of employee who issued the book):**
+**Task 3. Delete a record from the issued status table (knowing the book name, issued date and the id of employee who issued the book):**
 
 Book name: The Shining
 Issued date: 2024-03-25
@@ -336,7 +336,7 @@ DELETE FROM issued_status
 WHERE issued_book_name = 'The Shining' AND issued_date = '2024-03-25' AND issued_emp_id = 'E109';
 ```
 
-**Task 4. Retrieve All Books Issued by a Specific Employee (knowing his name):**
+**Task 4. Retrieve all books issued by a specific employee (knowing his name):**
 
 Employee name: John Doe
 
@@ -395,7 +395,7 @@ ON ist.issued_book_isbn = b.isbn
 GROUP BY b.isbn;
 ```
 
-**Task 7. Retrieve All Books in a Specific Category:**
+**Task 7. Retrieve all books in a specific category:**
 
 Category: Classic
 
@@ -405,7 +405,7 @@ FROM books
 WHERE category = 'Classic';
 ```
 
-**Task 8. Find Total Rental Income by Category**
+**Task 8. Find total rental income by category**
 
 ```sql
 SELECT 
