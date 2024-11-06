@@ -150,7 +150,7 @@ RENAME COLUMN status TO avail_status;
 ```sql
 -- Inserting values into books table 
 
-INSERT INTO books(isbn, book_title, category, rental_price, status, author, publisher) 
+INSERT INTO books(isbn, book_title, category, rental_price, avail_status, author, publisher) 
 VALUES
 ('978-0-553-29698-2', 'The Catcher in the Rye', 'Classic', 7.00, 'yes', 'J.D. Salinger', 'Little, Brown and Company'),
 ('978-0-330-25864-8', 'Animal Farm', 'Classic', 5.50, 'yes', 'George Orwell', 'Penguin Books'),
