@@ -10,10 +10,11 @@ This project demonstrates the implementation of a Library Management System usin
 
 ## Objectives
 
-1. **Set up the Library Management System Database**: Create and populate the database with tables for books, branches, employees, members, issued status, and return status. Establish relationships between tables (main key and foreign keys).
-2. **CRUD Operations**: Perform Create, Read, Update, and Delete operations on the data.
-3. **CTAS (Create Table As Select)**: Utilize CTAS to create new tables based on query results.
-4. **Advanced SQL Queries**: Develop complex queries to analyze and retrieve specific data.
+1. **Set up the Library Management System database**: Create the database with tables for books, branches, employees, members, issued status, and return status using DDL commands. Establish relationships between tables (main key and foreign keys).
+2. **Insert first records**: Insert records using given csv file.
+3. **Complete tasks by creating queries**: Complete tasks using DQL commands, including CRUD operations, CTAS and another queries for data analysis and findings.
+4. **Update a database**: Update a database by inserting new issuances, adding new column in return status table and updating values in this column.
+5. **Complete more advanced tasks**: Complete tasks like identifying members with overdue books and counting total fines.
 
 ## Project Structure
 
