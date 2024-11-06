@@ -22,7 +22,7 @@ This project demonstrates the implementation of a Library Management System usin
 ![ERD](library_ERD.png)
 
 - **Database Creation**: Created a database named `LIBRARY_project` using pgAdmin user interface.
-- **Table Creation**: Created tables for books, branches, employees, members, issued status, and return status. Each table includes relevant columns and relationships.
+- **Table Creation**: Created tables for branches, employees, books, members, issued status, and return status. Each table includes relevant columns and relationships.
 
 ```sql
 -- creating tables
@@ -30,72 +30,71 @@ This project demonstrates the implementation of a Library Management System usin
 DROP TABLE IF EXISTS branch;
 CREATE TABLE branch
 	(
-		branch_id VARCHAR(10) PRIMARY KEY,
-		manager_id VARCHAR(10),
-		branch_address VARCHAR(55),
-		contact_no VARCHAR(13)
+	branch_id VARCHAR(10) PRIMARY KEY,
+	manager_id VARCHAR(10),
+	branch_address VARCHAR(55),
+	contact_no VARCHAR(13)
 	);
 
 
 DROP TABLE IF EXISTS employees;
 CREATE TABLE employees
 	(
-		emp_id VARCHAR(10) PRIMARY KEY,
-		emp_name VARCHAR(35),
-		position VARCHAR(25),
-		salary INT,
-		branch_id VARCHAR(10) --FK
+	emp_id VARCHAR(10) PRIMARY KEY,
+	emp_name VARCHAR(35),
+	position VARCHAR(25),
+	salary INT,
+	branch_id VARCHAR(10) --FK
 	);
 
 	
 DROP TABLE IF EXISTS books;
 CREATE TABLE books
 	(
-		isbn VARCHAR(20) PRIMARY KEY,
-		book_title VARCHAR(75),
-		category VARCHAR(20),
-		rental_price FLOAT,
-		status VARCHAR(5),
-		author VARCHAR(35),
-		publisher VARCHAR(40)
-
+	isbn VARCHAR(20) PRIMARY KEY,
+	book_title VARCHAR(75),
+	category VARCHAR(20),
+	rental_price FLOAT,
+	status VARCHAR(5),
+	author VARCHAR(35),
+	publisher VARCHAR(40)
 	);
 
 
 DROP TABLE IF EXISTS members;
 CREATE TABLE members
 	(
-		member_id VARCHAR(10) PRIMARY KEY,
-		member_name	VARCHAR(35),
-		member_address VARCHAR(75),
-		reg_date DATE
+	member_id VARCHAR(10) PRIMARY KEY,
+	member_name VARCHAR(35),
+	member_address VARCHAR(75),
+	reg_date DATE
 	);
 
 
 DROP TABLE IF EXISTS issued_status;
 CREATE TABLE issued_status
 	(
-		issued_id VARCHAR(10) PRIMARY KEY,
-		issued_member_id VARCHAR(10), --FK
-		issued_book_name VARCHAR (75), 
-		issued_date DATE,
-		issued_book_isbn VARCHAR(20), --FK
-		issued_emp_id VARCHAR(10) --FK
+	issued_id VARCHAR(10) PRIMARY KEY,
+	issued_member_id VARCHAR(10), --FK
+	issued_book_name VARCHAR (75),
+	issued_date DATE,
+	issued_book_isbn VARCHAR(20), --FK
+	issued_emp_id VARCHAR(10) --FK
 	);
 
 
 DROP TABLE IF EXISTS return_status;
 CREATE TABLE return_status
 	(
-		return_id VARCHAR(10) PRIMARY KEY,
-		issued_id VARCHAR(10),
-		return_book_name VARCHAR(75),
-		return_date DATE,
-		return_book_isbn VARCHAR(20)
+	return_id VARCHAR(10) PRIMARY KEY,
+	issued_id VARCHAR(10),
+	return_book_name VARCHAR(75),
+	return_date DATE,
+	return_book_isbn VARCHAR(20)
 	);
 
 
--- FOREIGN KEY
+-- adding FOREIGN KEY
 
 ALTER TABLE issued_status
 ADD CONSTRAINT fk_members
