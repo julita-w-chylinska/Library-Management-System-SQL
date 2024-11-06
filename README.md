@@ -470,7 +470,7 @@ WHERE rst.return_id IS NULL
 ORDER BY issued_date ASC; -- ordering by the date of issuance to see which books where borrowed the farthest back in time
 ```
 
-### 4. Updateing a database
+### 4. Updating a database
 
 ```sql
 -- Inserting new issuances into the table
