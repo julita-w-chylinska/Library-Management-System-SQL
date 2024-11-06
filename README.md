@@ -19,7 +19,6 @@ This project demonstrates the implementation of a Library Management System usin
 ## Project Structure
 
 ### 1. Setting up the Library Management System database
-![ERD](library_ERD.png)
 
 - **Database Creation**: Created a database named `LIBRARY_project` using pgAdmin user interface.
 - **Table Creation**: Created tables for branches, employees, books, members, issued status, and return status. Each table includes relevant columns and relationships.
@@ -134,6 +133,9 @@ ALTER TABLE books
 RENAME COLUMN status TO avail_status;
 
 ```
+- **EDB Creation**: Created legible Entitiy Relationship Diagram dependencies between tables.
+
+![ERD](library_ERD.png)
 
 ### 2. CRUD Operations
 
