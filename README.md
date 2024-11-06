@@ -6,7 +6,7 @@
 
 This project demonstrates the implementation of a Library Management System using SQL. It includes creating database with DDL queries, establishing relationships between tables, inserting first records into tables, performing another CRUD operations and executing more advanced SQL queries like CTE. The goal is to showcase skills in database design, manipulation and querying.
 
-![Library_project](library_image.webp)
+![Library image](library_image.webp)
 
 ## Objectives
 
@@ -20,8 +20,8 @@ This project demonstrates the implementation of a Library Management System usin
 
 ### 1. Setting up the Library Management System database
 
-- **Database Creation**: Created a database named `LIBRARY_project` using pgAdmin user interface.
-- **Table Creation**: Created tables for branches, employees, books, members, issued status, and return status. Each table includes relevant columns and relationships.
+- **Creation database**: Created a database named `LIBRARY_project` using pgAdmin user interface.
+- **Creating tables**: Created tables for branches, employees, books, members, issued status, and return status. Each table includes relevant columns and relationships.
 
 ```sql
 -- creating tables
@@ -133,7 +133,7 @@ ALTER TABLE books
 RENAME COLUMN status TO avail_status;
 
 ```
-- **EDB Creation**: Created legible Entitiy Relationship Diagram to show dependencies between tables.
+- **Creation EDB**: Created legible Entitiy Relationship Diagram to show dependencies between tables.
 
 ![ERD](library_ERD.png)
 
@@ -141,7 +141,9 @@ RENAME COLUMN status TO avail_status;
 
 - **Creating SQL code from CSV file**: Using ChatGPT to change CSV file content into SQL code
 
+![chatGPT](library_ChatGPT_adjusting_code.png)
 
+- **Inserting first records**: Inserting first records with adjusted code
 
 ```sql
 -- Inserting values into books table 
