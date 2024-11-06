@@ -10,7 +10,7 @@ This project demonstrates the implementation of a Library Management System usin
 
 ## Objectives
 
-1. **Set up the Library Management System Database**: Create and populate the database with tables for branches, employees, members, books, issued status, and return status.
+1. **Set up the Library Management System Database**: Create and populate the database with tables for books, branches, employees, members, issued status, and return status. Establish relationships between tables (main key and foreign keys).
 2. **CRUD Operations**: Perform Create, Read, Update, and Delete operations on the data.
 3. **CTAS (Create Table As Select)**: Utilize CTAS to create new tables based on query results.
 4. **Advanced SQL Queries**: Develop complex queries to analyze and retrieve specific data.
@@ -20,8 +20,8 @@ This project demonstrates the implementation of a Library Management System usin
 ### 1. Database Setup
 ![ERD](library_ERD.png)
 
-- **Database Creation**: Created a database named `library_db`.
-- **Table Creation**: Created tables for branches, employees, members, books, issued status, and return status. Each table includes relevant columns and relationships.
+- **Database Creation**: Created a database named `LIBRARY_project`.
+- **Table Creation**: Created tables for books, branches, employees, members, issued status, and return status. Each table includes relevant columns and relationships.
 
 ```sql
 CREATE DATABASE library_db;
