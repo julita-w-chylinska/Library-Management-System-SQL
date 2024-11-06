@@ -637,6 +637,7 @@ Then create another table which sums up the fine for each member.
 
 ```sql
 -- first table
+
 CREATE TABLE overdue_books_and_fines
 AS
 WITH overdue_books as 
@@ -672,7 +673,9 @@ FROM
 ORDER BY 
     member_id, days_overdue DESC;
 
+
 -- second table
+
 CREATE TABLE total_fine_per_member
 AS
 SELECT
