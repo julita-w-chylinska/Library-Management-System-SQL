@@ -4,7 +4,7 @@
 
 **Level**: Pre-intermediate  
 
-This project demonstrates the implementation of a Library Management System using SQL. It includes creating database with DDL queries, establishing relationships between tables, inserting first records into tables, performing another CRUD operations and executing more advanced SQL queries like CTE. The goal is to showcase skills in database design, manipulation and querying.
+This project demonstrates the implementation of a Library Management System using SQL. It includes creating database with DDL queries, establishing relationships between tables, inserting first records into tables, performing another CRUD operations and executing more advanced SQL queries like CTE. It showcases skills in database design, manipulation and querying.
 
 ![Library image](library_image.webp)
 
